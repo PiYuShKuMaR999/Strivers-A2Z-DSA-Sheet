@@ -29,6 +29,7 @@ void deleteAllOccurOfX(struct Node** head_ref, int x) {
             // First node
             if (!curr->prev) {
                 *head_ref = curr->next;
+                curr->next->prev = NULL
             }
             // Last node
             else if (!curr->next) {
