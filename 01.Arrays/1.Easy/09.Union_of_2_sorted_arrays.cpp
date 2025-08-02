@@ -90,3 +90,28 @@ vector<int> findUnion(int arr1[], int arr2[], int n, int m)
 
 // TIME COMPLEXITY = O(N+M)
 // SPACE COMPLEXITY = O(0)
+
+
+
+
+/////////////////BRUTEEEEEEEEEEEEEforceusingset///////////////
+class Solution {
+  public:
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        // code here
+        int n=a.size();
+        int m=b.size();
+        set < int > s;
+        vector < int > Union;
+  
+        for(int i=0; i<n;i++){
+            s.insert(a[i]);
+        }
+        for(int i=0; i<m;i++){
+            s.insert(b[i]);
+        }
+        for (auto & it: s)
+        Union.push_back(it);
+        return Union;
+    }
+};
