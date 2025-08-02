@@ -22,6 +22,25 @@ APPROACH:-
 */
 
 // CODE:-
+//////////////Brute force///////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////optimalmsoln////////////
+
 int missingNumber(vector<int> &nums)
 {
     int n = nums.size();
@@ -36,3 +55,7 @@ int missingNumber(vector<int> &nums)
 
 // TIME COMPLEXITY = O(N)
 // SPACE COMPLEXITY = O(0)
+
+
+
+//also do using xor for optimising space complexity
