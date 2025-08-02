@@ -83,22 +83,27 @@ void leftRotate(int arr[], int n, int k)
     }
 };
 //RIGHT SWAP///
-
-    // Function to rotate an array by d elements in counter-clockwise direction.
-    void rotateArr(vector<int>& arr, int d) {
+class Solution {
+public:
+    // Function to rotate an array by k elements in clockwise (right) direction.
+    void rotateArr(vector<int>& arr, int k) {
         int n = arr.size();
         if (n == 0) return;
-        d = d % n; // Handle d > n
-        if (d == 0) return;
-        for (int i = 0; i < d; i++) {
-            // Store the first element
-            int first = arr[0];
-            // Shift all elements one position to the left
-            for (int j = 0; j < n - 1; j++) {
-                arr[j] = arr[j + 1];
+
+        k = k % n; // Handle k > n
+        if (k == 0) return;
+
+        for (int i = 0; i < k; i++) {
+            // Store the last element
+            int last = arr[n - 1];
+
+            // Shift all elements one position to the right
+            for (int j = n - 1; j > 0; j--) {
+                arr[j] = arr[j - 1];
             }
-            // Move the first element to the end
-            arr[n - 1] = first;
+
+            // Move the last element to the front
+            arr[0] = last;
         }
     }
 };
