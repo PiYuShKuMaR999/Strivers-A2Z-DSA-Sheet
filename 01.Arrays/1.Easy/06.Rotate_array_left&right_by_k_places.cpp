@@ -55,3 +55,50 @@ void leftRotate(int arr[], int n, int k)
 
 // TIME COMPLEXITY = O(N)
 // SPACE COMPLEXITY = O(0)
+
+
+//////BRUTE APPROACH/////
+
+// left//
+    // Function to rotate an array by d elements in counter-clockwise direction.
+    void rotateArr(vector<int>& arr, int d) {
+        int n = arr.size();
+        if (n == 0) return;
+        d = d % n; // In case d > n
+        if (d == 0) return;
+        vector<int> temp(d);
+    
+        // Store first d elements
+        for (int i = 0; i < d; i++) {
+            temp[i] = arr[i];
+        }
+        // Shift remaining elements to the left
+        for (int i = d; i < n; i++) {
+            arr[i - d] = arr[i];
+        }
+        // Put the d elements back at the end
+        for (int i = 0; i < d; i++) {
+            arr[n - d + i] = temp[i];
+        }
+    }
+};
+//RIGHT SWAP///
+
+    // Function to rotate an array by d elements in counter-clockwise direction.
+    void rotateArr(vector<int>& arr, int d) {
+        int n = arr.size();
+        if (n == 0) return;
+        d = d % n; // Handle d > n
+        if (d == 0) return;
+        for (int i = 0; i < d; i++) {
+            // Store the first element
+            int first = arr[0];
+            // Shift all elements one position to the left
+            for (int j = 0; j < n - 1; j++) {
+                arr[j] = arr[j + 1];
+            }
+            // Move the first element to the end
+            arr[n - 1] = first;
+        }
+    }
+};
