@@ -20,33 +20,50 @@ APPROACH:-
 */
 
 // CODE:-
-// function to find the next non-zero element
-int next_nonzero(vector<int> &a, int &j)
-{
-    while (j < a.size())
-    {
-        if (a[j] != 0)
-            return j;
-        j++;
-    }
-    return -1;
-}
-void moveZeroes(vector<int> &nums)
-{
-    int j = -1; // is to find the next non zero element
-    // i signifies that upto here all elements are non-zero
-    for (int i = 0; i < nums.size(); i++)
-    {
-        if (nums[i] != 0)
-            continue;
-        if (j == -1)
-            j = i + 1;
-        int nxt_non0 = next_nonzero(nums, j);
-        if (nxt_non0 == -1)
-            return;
-        swap(nums[i], nums[nxt_non0]);
-    }
-}
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
 
-// TIME COMPLEXITY = O(N) (as we moving j throught the array only once)
-// SPACE COMPLEXITY = O(0)
+        ///bruteee/////
+        // vector<int>temp;
+        // int n=nums.size();
+        // for(int i=0; i<n;i++){
+        //     if(nums[i]!=0)
+        //     temp.push_back(nums[i]);
+        // }
+        // int nz=temp.size();
+
+        // for(int i=0;i<nz;i++){
+        //     nums[i]=temp[i];
+        // }
+
+        //     for(int i=nz; i<n;i++){
+        //         nums[i]=0;
+        //     }
+        // }
+
+
+        
+        /////////////////////////////optimal////////////////////////
+        int n=nums.size();
+
+        int j=-1;
+        for(int i=0;i<n;i++){
+            if(nums[i]==0){
+                j=i;
+                break;
+
+            }
+        }
+        if(j==-1) return;
+
+        for(int i=j+1;i<n;i++){
+            if(nums[i]!=0){
+                swap(nums[i],nums[j]);
+                j++;
+            }
+        }
+    }
+};
+        // TIME COMPLEXITY = O(N) (as we moving j throught the array only once)
+        // SPACE COMPLEXITY = O(0)
