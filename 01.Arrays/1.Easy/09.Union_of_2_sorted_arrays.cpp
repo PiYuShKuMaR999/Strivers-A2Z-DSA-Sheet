@@ -39,55 +39,39 @@ APPROACH:-
 */
 
 // CODE:-
-vector<int> findUnion(int arr1[], int arr2[], int n, int m)
-{
-    int i = 0; // i to keep track in arr1
-    int j = 0; // j to keep track in arr2
-    vector<int> ans;
-
-    while (i < n && j < m)
-    {
-
-        if (arr1[i] < arr2[j])
+int n=a.size();
+    int m=b.size();
+    int i=0;
+    int j=0;
+    vector < int > Union; // Uninon vector
+    while (i < n && j < m) {
+    if (a[i] <= b[j]) // Case 1 and 2
         {
-            ans.push_back(arr1[i++]);
-            while (i < n && arr1[i] == arr1[i - 1])
-                i++;
-        }
-        else if (arr2[j] < arr1[i])
+          if (Union.size() == 0 || Union.back() != a[i])
+            Union.push_back(a[i]);
+          i++;
+        } else // case 3
         {
-            ans.push_back(arr2[j++]);
-            while (j < m && arr2[j] == arr2[j - 1])
-                j++;
-        }
-        // means arr1[i] = arr2[j] in that case we can insert anyone
-        else
-        {
-            ans.push_back(arr1[i++]);
-            j++;
-            while (i < n && arr1[i] == arr1[i - 1])
-                i++;
-            while (j < m && arr2[j] == arr2[j - 1])
-                j++;
+          if (Union.size() == 0 || Union.back() != b[j])
+            Union.push_back(b[j]);
+          j++;
         }
     }
-
-    while (i < n)
-    {
-        ans.push_back(arr1[i++]);
-        while (i < n && arr1[i] == arr1[i - 1])
+      while (i < n) // IF any element left in arr1
+        {
+            if (Union.back() != a[i])
+              Union.push_back(a[i]);
             i++;
-    }
-    while (j < m)
-    {
-        ans.push_back(arr2[j++]);
-        while (j < m && arr2[j] == arr2[j - 1])
+          }
+          while (j < m) // If any elements left in arr2
+          {
+            if (Union.back() != b[j])
+              Union.push_back(b[j]);
             j++;
-    }
-
-    return ans;
+          }
+  return Union;
 }
-
+};
 // TIME COMPLEXITY = O(N+M)
 // SPACE COMPLEXITY = O(0)
 
