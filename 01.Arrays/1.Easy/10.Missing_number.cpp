@@ -41,17 +41,17 @@ APPROACH:-
 
 ////////////optimalmsoln////////////
 
-int missingNumber(vector<int> &nums)
-{
-    int n = nums.size();
-    long long optimum_sum = (n * (n + 1)) / 2; // the sum if no number is absent
-    long long actual_sum = 0;
-    for (auto it : nums)
-    {
-        actual_sum += it;
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int sum=0;
+        int n=nums.size();
+        for(int i=0; i<n;i++){
+            sum=sum+nums[i];
+        }
+        return (n*(n+1)/2)-sum;
     }
-    return optimum_sum - actual_sum;
-}
+};
 
 // TIME COMPLEXITY = O(N)
 // SPACE COMPLEXITY = O(0)
