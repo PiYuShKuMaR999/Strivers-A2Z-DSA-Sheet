@@ -18,7 +18,24 @@ Since the array is sorted and every element appears exactly twice except for one
 6. Return nums[low] as the result.
 
 CODE:
+
+
 */
+/////YOU CAN ALSO THINK OF BRUTE FORCE /////
+int singleNonDuplicate(vector<int>& nums) {
+    int n = nums.size();
+    for (int i = 0; i < n; ++i) {
+        bool leftMatch = (i > 0) ? (nums[i] == nums[i-1]) : false;
+        bool rightMatch = (i < n-1) ? (nums[i] == nums[i+1]) : false;
+        if (!leftMatch && !rightMatch) {
+            return nums[i];
+        }
+    }
+    return -1; // In case no single element found (shouldn't happen per problem constraints)
+}
+////////////////////////////////////////////
+
+
 
 int singleNonDuplicate(vector<int>& nums) {
     int low = 0, high = nums.size() - 1;
